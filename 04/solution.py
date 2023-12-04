@@ -26,6 +26,12 @@ def get_game_score(game):
         return 0
     return score
 
+def get_total_points(games):
+    total = 0
+    for game in games:
+        total += get_game_score(game)
+    return total
+
 def get_card_copies(game):
     id, winners, scratched = game
     copies = 0
@@ -33,12 +39,6 @@ def get_card_copies(game):
         if i in scratched:
             copies += 1
     return [i for i in range(id+1,id+copies+1)]
-
-def get_total_points(games):
-    total = 0
-    for game in games:
-        total += get_game_score(game)
-    return total
 
 def get_total_card_copies(card_id):
     if card_id in cards_total_copies:
